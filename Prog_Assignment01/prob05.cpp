@@ -21,4 +21,6 @@ int main()
     }
 
     cout << "RESULT : " << smallest << endl;
+
+    return 0;
 }
