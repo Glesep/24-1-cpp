@@ -1,14 +1,22 @@
-int count = 0, limit = 100;
-for (int i=1; i<=limit; i++) {                                  // 100번 반복                   i
+#include <iostream>
+using namespace std;
 
-    for (int j=i+1; j<=limit; j++) {                            // 99번 반복                    i+1
+int main()
+{
+    int count = 0, limit = 100;
+    for (int i=1; i<=limit; i++) {                                 
 
-        for (int k=j+1; k<=limit; k++) {                        // 98번 반복                    i+2                 결국 98번 반복함
+        for (int j=i+1; j<=limit; j++) {                           
 
-            if ((i + j + k) % 10 == 0)                          // i + i+1 + i+2 % 10 == 3i + 3을 10으로 나눈 나머지가 0이 될 때 == 10의 배수일 때
-                count++;
-        }
-    }   
+            for (int k=j+1; k<=limit; k++) {                        
+
+                if ((i + j + k) % 10 == 0)                      // i + j + k가 10의 배수가 되는 경우 count++                        
+                    count++;
+            }
+        }   
+    }
+    cout << count << endl;
 }
-cout << count << end
+
+
 
