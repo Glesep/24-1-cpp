@@ -5,6 +5,8 @@
         "type_traits": "cpp",
         "functional": "cpp",
         "random": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "array": "cpp",
+        "string": "cpp"
     }
 }
