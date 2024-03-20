@@ -23,8 +23,9 @@ int main()
         if (num < min)
             min = num;
         
-        cout << "max - min = " << max - min << endl;
+        cout << max - min << " ";
     }
+    cout << endl;
 
     return 0;
 }

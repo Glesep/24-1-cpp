@@ -13,7 +13,7 @@ int main()
         sum += X;
     }
 
-    cout << "RESULT : " << sum << endl;
+    cout << sum << endl;
     
     return 0;
 }

@@ -23,5 +23,5 @@ int main()
         }
     }
 
-    cout << "RESULT : " << cnt << endl;
+    cout << cnt << endl;
 }

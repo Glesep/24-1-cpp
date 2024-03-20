@@ -20,7 +20,7 @@ int main()
             smallest = num; 
     }
 
-    cout << "RESULT : " << smallest << endl;
+    cout << smallest << endl;
 
     return 0;
 }

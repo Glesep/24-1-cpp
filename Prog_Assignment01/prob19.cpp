@@ -31,7 +31,7 @@ int main()
         }
     }
 
-    cout << "RESULT : " << result << endl;
+    cout << result << endl;
 
     return 0;
 }

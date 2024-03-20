@@ -26,7 +26,7 @@ int main()
 
     SD = sqrt(sum_dev / n);
 
-    cout << "Average : " << average << "  SD : " << SD << endl;
+    cout << average << " " << SD << endl;
 
     return 0;
 }

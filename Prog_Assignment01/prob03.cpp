@@ -20,7 +20,7 @@ int main()
         sum += 1 / double(factorial);                               // 합 계산 (이 행에서만 factorial의 type을 double로 변환)
     }
 
-    cout << "RESULT : " << sum << endl;
+    cout << sum << endl;
 
     return 0;
 }

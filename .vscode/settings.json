@@ -8,6 +8,7 @@
         "*.tcc": "cpp",
         "array": "cpp",
         "string": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "fstream": "cpp"
     }
 }

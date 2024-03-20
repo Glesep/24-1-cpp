@@ -17,7 +17,7 @@ int main()
         f_nm1 = f_n;
     }
 
-    cout << "f_n = " << f_n << endl;
+    cout << f_n << endl;
 
     return 0;
 }
