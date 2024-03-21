@@ -8,9 +8,12 @@ const int MAX = 1000;
 
 int main()
 {
-    ifstream infile("input35.txt");
+    ifstream infile("input3.txt");
+    
+    
     string str;
     string words[MAX];
+    int count[MAX];
     int n = 0;
 
     // 한번에 한 단어씩 읽고싶을 때, 읽을 것이 없으면 false 반환
@@ -36,17 +39,54 @@ int main()
                 if (words[i] == pure_word)                          // 이미 등록된 문자열인지 검사
                 {
                     found = true;
+                    count[i]++;
                     break;
                 }
             }
-            if(!found)                                              // 목록에 없는 문자열만 목록에 추가
-                words[n++] = pure_word;
+            if(!found)                                              // 목록에 없는 문자열은 목록에 추가 후 빈도수 체크
+            {
+                words[n] = pure_word;
+                count[n]++;
+                n++;                                                // 마지막 요소는 비어있다.
+            }    
         }
     }
+
+    //bubble sort
+    for (int i = n-1; i > 0; i--)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            if (count[j] < count[j+1])                          // 작은 게 뒤로 가야함                                             
+            {
+                int tmp1 = count[j];
+                count[j] = count[j+1];
+                count[j+1] = tmp1;
+
+                string tmp2 = words[j];
+                words[j] = words[j+1];
+                words[j+1] = tmp2;
+            }
+        }
+    }
+
+    for (int i = n-1; i > 0; i--)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            if (count[j] == count[j+1] && words[j] > words[j+1])                                                
+            {
+                string tmp = words[j];
+                words[j] = words[j+1];
+                words[j+1] = tmp;
+            }
+        }
+    }
+
     infile.close();
 
     for (int i = 0; i < n; i++)
-        cout << words[i] << endl;
+        cout << words[i] << ":" << count[i] << endl;
 
     return 0;
 }
