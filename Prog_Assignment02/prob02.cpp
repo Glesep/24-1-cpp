@@ -26,7 +26,6 @@ int main()
             // 앞이 공백이고 뒤가 문자나 숫자가 아닌 경우
             else if (isspace(text[i]) && !isalnum(text[i+1]))
             {   
-                
                 text.erase(i,1);
                 i--;
             }
