@@ -3,17 +3,20 @@
 #include <cctype>
 using namespace std;
 
-// 1. 숫자냐 기호냐 판별
-// 2. 숫자이면 iterator 개념과 비슷하게 index 저장
-// 3. 문자이면 bool 이용해서 음수인지 양수인지 판별
+// 1. 문자를 읽은 후 숫자이면 part에 저장
+// 2. 기호이면 part 변수의 문자열이 있을 경우 negative 변수에 따른 계산
+// 3. 그 후 기호의 종류에 따라 negative 상태 변경
+// 4. 마지막 숫자일 경우 negative 변수에 따른 추가 계산 
 int main()
 {
     string calculater;
     cin >> calculater;
-    string plus = "+", minus = "-";
+
+    // 필요한 변수들
+    string plus = "+", minus = "-", part ="";
     int sum = 0;
-    string part ="";
     bool negative = false;
+
     for (int i = 0; i < calculater.length(); i++)
     {   
         // 숫자가 아니라면 (기호라면)
