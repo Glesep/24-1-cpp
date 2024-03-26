@@ -10,7 +10,6 @@ int main()
     vector<string> words;
     // 파일 불러오기
     ifstream infile("harry.txt");
-
     // 중복 없이 모든 단어 목록 벡터에 저장
     string str;
     while (infile >> str)
@@ -59,6 +58,6 @@ int main()
         }
     }
     cout << count << endl;
-
+    
     return 0;
 }
