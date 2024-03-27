@@ -4,7 +4,6 @@
 #include <string>
 #include <algorithm>
 using namespace std;
-// line.find()부분 함수화하기!!!!
 
 // 한 줄을 받고 '\t'에서 끊을까??
 // string 타입의 변수에 먼저 받아서 벡터로 넣어준다.
@@ -47,7 +46,7 @@ int main()
         }
     }
     bool found = false;
-    // 찾았을 때
+    // 단어를 찾았을 때
     for (int i = 0; i < line.size(); i++)
     {
         int index_word = line[i].find('\t');
@@ -60,31 +59,26 @@ int main()
             break;
         } 
     }
-    
+
+    // 단어를 찾지 못했을 때
     if (!found)
     {
         int n = 0;
         int index_word = line[0].find('\t');
         // str의 바로 다음에 올 단어의 인덱스 찾기
         while(str > line[n].substr(0, index_word))
-        {
-            index_word = line[n].find('\t');
             n++;
-        }
+        
         cout << "Not found" << endl;
         // 바로 전
         cout << "- " << line[n-1].substr(0, line[n-1].find('\t')) << ": "
             << line[n-1].substr(line[n-1].find('\t')+1) << endl;
-                // 바로 후
+        // 바로 후
         cout << "+ " << line[n].substr(0, line[n].find('\t')) << ": "
             << line[n].substr(line[n].find('\t')+1) << endl;
     }
-    
-        
 
-
-
-    // 접두사로 찾았다면...
+    // 접두사 체크.
     cout << endl;
     cout << "Results of prefix search:" << endl;
     for (int j = 0; j < line.size(); j++)
@@ -92,6 +86,7 @@ int main()
         int index_word = line[j].find('\t');
         string word_check = line[j].substr(0, index_word);
             
+        // 접두사가 아니라면
         int k = 0;
         for (; k < str.size(); k++)
         {
@@ -100,21 +95,13 @@ int main()
                 break;
             }
         }
-            
+        // 접두사라면
         if (k == str.size())
         {
             cout << word_check << ": " << line[j].substr(index_word+1) << endl;
         }
     }
-    
     infile.close();
-
-
 
     return 0;
 }
-
-
-
-
-// ":" 기준으로 전까지 단어로 인식
