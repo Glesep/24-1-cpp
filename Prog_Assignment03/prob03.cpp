@@ -6,11 +6,6 @@
 #include <cctype>
 using namespace std;
 
-// 현재 구현 범위 : line -> lineContent, lineNums -> lineContents로 변경하여 e번 구현 시도
-
-// 현재 오류 : income 찾을 시 글자깨짐
-
-
 // 전역 변수
 vector<string> words;
 // lineContents의 첫번째 인덱스: 단어가 저장된 순서(단어 분별용) == words의 인덱스 
@@ -24,6 +19,7 @@ void addWord(string word, string lineContent);
 int findWord(string keyword);
 void saveAs(string fileName);
 vector<string> split_line(string line, char delimiter);
+void sortWords(vector<string> &words, vector<vector<string>> &lineContents);
 
 
 int main() {
@@ -37,7 +33,6 @@ int main() {
             cin >> fileName;
             makeIndex(fileName);
         }
-        
         else if (command == "find") {
             string keyword;
             cin >> keyword;
@@ -48,7 +43,7 @@ int main() {
     }
     return 0;
 }
-// ===============================================================================================================
+// =============================================================== 여기부터 함수 부분 =======================================================================
 // 인덱스 만들기
 void makeIndex(string fileName) {
     ifstream theFile(fileName);
@@ -64,7 +59,7 @@ void makeIndex(string fileName) {
                 addWord(s, lineContent);
         lineNum++;
     }
-    // 인덱스 정렬 Bubblesort?
+    sortWords(words, lineContents);
     theFile.close();
 }
 // 라인에서 문자만 뽑아주기
@@ -75,7 +70,7 @@ vector<string> split_line(string line, char delimiter) {
     stringstream sstream(line);
     string str;
 
-    while (getline(sstream, str, delimiter))        // 구분자 기준으로 잘라 읽기
+    while (getline(sstream, str, delimiter))                     // 구분자 기준으로 잘라 읽기
         tokens.push_back(str);
     
     return tokens;
@@ -83,7 +78,7 @@ vector<string> split_line(string line, char delimiter) {
 // 단어 뽑아내기
 string makePureWord(string word) {
     int s = 0, t = word.length()-1;
-    while (s < word.length() && !isalnum(word[s]))                // 알파벳이거나 숫자가 아니고, s가 str길이보다 작은동안, (앞에서 줄여가기)
+    while (s < word.length() && !isalnum(word[s]))               // 알파벳이거나 숫자가 아니고, s가 str길이보다 작은동안, (앞에서 줄여가기)
         s++;
         
     while (t >= 0 && !isalnum(word[t]))                          // t가 0보다 크고 알파벳이나 숫자가 아닐 때. (뒤에서 줄여가기)
@@ -93,7 +88,7 @@ string makePureWord(string word) {
     // if도 스코프 생각하기
     if (s <= t)
     {
-        pure_word = word.substr(s, t-s+1);                // 시작 위치: s, 문자의 개수(인덱스 포함): t-s+1
+        pure_word = word.substr(s, t-s+1);                      // 시작 위치: s, 문자의 개수(인덱스 포함): t-s+1
 
         for (int i = 0; i < pure_word.length(); i++)
             pure_word[i] = tolower(pure_word[i]);               // cctype이 제공, 소문자로 변환
@@ -101,7 +96,6 @@ string makePureWord(string word) {
     }
     return pure_word;
 }
-
 // 단어를 추가하기
 void addWord(string word, string lineContent) {
     // 단어만 뽑아내기
@@ -113,17 +107,25 @@ void addWord(string word, string lineContent) {
     // words의 인덱스와 lineContents의 인덱스가 같다.
         lineContents[index].push_back(lineContent);
     else {
-        // words 벡터에 word 추가
-        words.push_back(pureWord);
-        // tmp 벡터에 lineNum(word가 나타난 라인 번호)를 저장
-        vector<string> tmp = {lineContent};
-        // lineContents에 tmp를 저장
-        lineContents.push_back(tmp);
+        // 길이가 3 이상이면 words 벡터에 pureWord 추가
+        if (pureWord.length() >= 3) {
+            words.push_back(pureWord);
+            // tmp 벡터에 lineContent를 저장
+            vector<string> tmp = {lineContent};
+            // lineContents에 tmp를 저장
+            lineContents.push_back(tmp);
+        }
     }
 }
-
 // 단어 찾기
 int findWord(string word) {
+
+    // 입력된 단어 소문자로 바꾸기
+    for (int i = 0; i < word.length(); i++) {
+        // tolower 사용법 알기
+        word[i] = tolower(word[i]);
+    }
+
     for (int i = 0; i < words.size(); i++) {
         // vector인 words 중 하나랑 겹친다면 인덱스 반환
         if (words[i] == word)
@@ -137,10 +139,31 @@ void handle_find(string keyword) {
     if (index != -1) {
         cout << "The word " << keyword << " appears " <<
             lineContents[index].size() << " times in lines: " << endl;
+        cout << lineContents[index][0] << endl;
         // 단어가 어떤 라인에서 나왔나 출력 (리인번호 + 라인 내용)
-        for (auto v : lineContents[index])
-            cout << v << endl;
+        for (int i = 1; i < lineContents[index].size(); i++) {
+            if (lineContents[index][i-1] != lineContents[index][i]) {
+                cout << lineContents[index][i] << endl;
+            }
+        }    
     }
     else cout << "The word " << keyword << " doesn't appear." << endl;
+}
+// Bubble Sort Algorithm
+void sortWords (vector<string> &words, vector<vector<string>> &lineContents) {
+    for (int i = words.size()-1; i > 0; i--) {
+        for (int j = 0; j < i; j++) {
+            if (words[j] > words[j+1]) {
+                // words 인덱스 바꾸기
+                string tmp1 = words[j];
+                words[j] = words[j+1];
+                words[j+1] = tmp1;
+                // linContents 인덱스 바꾸기 (words의 인덱스가 가리키는 단어와 같은 단어를 가리키기 때문)
+                vector<string> tmp2 = lineContents[j];
+                lineContents[j] = lineContents[j+1];
+                lineContents[j+1] = tmp2;
+            }
+        }
+    }
 }
 
