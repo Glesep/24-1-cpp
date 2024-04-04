@@ -110,7 +110,7 @@ void addWord(string word, string lineContent) {
         // 길이가 3 이상이면 words 벡터에 pureWord 추가
         if (pureWord.length() >= 3) {
             words.push_back(pureWord);
-            // tmp 벡터에 lineContent를 저장
+            // tmp 벡터에 lineContent를 저장 (새로운 벡터를 파줘야됨)
             vector<string> tmp = {lineContent};
             // lineContents에 tmp를 저장
             lineContents.push_back(tmp);
