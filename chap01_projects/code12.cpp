@@ -18,8 +18,8 @@ int main()
             break;
         }
     }
-
-    // while (N * 2 < = N)                                          곱한 것이 N보다 작거나 같을때를 기준으로 하면 코드가 훨씬 짧아짐
+    // int p = 1;
+    // while (p * 2 < = N)                                          곱한 것이 N보다 작거나 같을때를 기준으로 하면 코드가 훨씬 짧아짐
     //  p *= 2;
 
     cout << "Two is " << two << endl;

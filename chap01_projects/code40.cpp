@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 using namespace std;
-
+// 볼 필요 없음
 int main()
 {
     vector<string> sentence{"how", "is", "programming"};

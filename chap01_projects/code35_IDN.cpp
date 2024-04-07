@@ -22,7 +22,8 @@ int main()
         
         while (t >= 0 && !isalnum(str[t]))                          // t가 0보다 크고 알파벳이나 숫자가 아닐 때. (뒤에서 줄여가기)
             t--;
-    
+
+        // 특수문자밖에 없으면 t > s
         if (s <= t)
         {
             string pure_word = str.substr(s, t-s+1);                // 시작 위치: s, 문자의 개수(인덱스 포함): t-s+1

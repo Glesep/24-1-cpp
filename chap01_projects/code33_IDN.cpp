@@ -20,7 +20,7 @@ int main()
             break;
         }
         int count = fIndex - start;                 // substr로 자를 문자 개수("+" 문자 이전 정수 개수)
-        string part = s.substr(start, count);       // start 인덱스부터 count개의 문자를 substr하기 (인덱스위치의 문자도 포함)
+        string part = s.substr(start, count);       // start 인덱스부터 count개의 문자를 substr하기 (인덱스위치의 문자도 포함), "+" 제외
         sum += stoi(part);                          // stoi : string to int -> 문자열을 정수값으로 변환
         start = fIndex + 1;
     }

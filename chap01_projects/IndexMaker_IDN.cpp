@@ -7,7 +7,7 @@ using namespace std;
 
 // 전역 변수
 vector<string> words;
-// lineNums의 첫번째 인덱스: 단어가 저장된 순서(단어 분별용) == words의 인덱스 
+// lineNums의 첫번째 인덱스: 단어가 저장된 순서(단어 분별용) == words의 인덱스
 vector<vector<int>> lineNums;
 
 // 함수 미리 선언

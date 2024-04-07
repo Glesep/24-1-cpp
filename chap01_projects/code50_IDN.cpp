@@ -48,6 +48,7 @@ string trim(string str) {
 }
 
 // 참조에 의한 호출(대량의 데이터가 복사회는 것을 막기 위함)
+// 어떤 데이터에 str이란 다른 이름을 붙어준다고 생각하자 (&가 마크임)
 void tolowercase(string &str) {
     for (int i = 0; i < str.length(); i++)
         str[i] = tolower(str[i]);

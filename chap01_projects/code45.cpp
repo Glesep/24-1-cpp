@@ -5,6 +5,7 @@ using namespace std;
 
 int main()
 {
+    // insert를 이용 사이에 끼우기 >> code25.cpp와 비교
     vector<string> words;
     string str;
     while(1)

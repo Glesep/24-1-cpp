@@ -16,7 +16,7 @@ bool isPrime(int k) {
     if (k < 2)
         return false;
     
-    // i*i가 k 보다 작거나 같을 때 => i <= 루트 k => k의 약수가 있다면 루트 k의 약수가 있다.
+    // i*i가 k 보다 작거나 같을 때 => i <= 루트 k => k의 약수가 있다면 루트 k의 약수가 있다. (k가 정수이므로)
     for (int i = 2; i*i <= k; i++) {
         if (k % i == 0)
             return false;

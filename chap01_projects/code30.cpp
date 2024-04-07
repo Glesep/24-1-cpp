@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 const int MAX = 100;
-
+// j와 k의 인덱스는 따라감
 int main()
 {
     string words[MAX], str;                 // 단어 저장 

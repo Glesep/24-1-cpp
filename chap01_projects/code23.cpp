@@ -18,7 +18,7 @@ int main()
             if (data[j] > data[j+1])            // 맨 앞에서부터 시작해 최댓값을 data[i]로 몰아감
             {
                 int tmp = data[j];
-                data[j] = data[j+1];
+                data[j] = data[j+1];            // algorithm -> swap(a, b)
                 data[j+1] = tmp;
             }
         }
