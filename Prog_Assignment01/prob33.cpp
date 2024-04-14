@@ -85,3 +85,71 @@ void Where_We_Go(int cell[][MAX], int& index_row_NOW, int& index_col_NOW)       
     }
 
 }
+
+
+// #include <iostream>
+// #include <cstdlib>
+// #include <ctime>
+// using namespace std;
+// const int MAX = 100;
+
+// void reset();
+// bool is_blocked(int x, int y);
+// bool feasible_dir(int x, int y, int dir);
+
+// int maze[MAX][MAX], N;;
+// int offset[4][2] = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+// int main() {
+
+//     srand((unsigned int) time(NULL));
+//     cin >> N;
+//     int count = 0;
+//     for (int t=0; t<10000; t++) {
+//         int x=N/2, y=N/2;
+//         reset();
+//         maze[x][y] = 1;
+//         bool escaped = false;
+//         while(1) {
+//             if (x==0 || y==0 || x==N-1 || y==N-1) {
+//                 escaped = true;
+//                 break;
+//             }
+//             if (is_blocked(x,y))
+//                 break;
+//             int dir = rand()%4;
+//             if (feasible_dir(x, y, dir)) {
+//                 x += offset[dir][0];
+//                 y += offset[dir][1];
+//                 maze[x][y] = 1;
+//             }
+//         }
+//         if (escaped)
+//             count++;
+//     }
+//     cout << (double)count/10000 << endl;
+// }
+
+// void reset() {
+//     for (int i=0; i<N; i++)
+//         for (int j=0; j<N; j++)
+//             maze[i][j] = 0;
+// }
+
+// bool feasible_dir(int x, int y, int dir) {
+//     int next_x = x+offset[dir][0];
+//     int next_y = y+offset[dir][1];
+
+//     if (next_x >= 0 && next_x < N && next_y >= 0 && next_y < N
+//         && maze[next_x][next_y] == 0)
+//         return true;
+//     return false;
+// }
+
+// bool is_blocked(int x, int y) {
+//     for (int d=0; d<4; d++) {
+//         if (feasible_dir(x, y, d))
+//             return false;
+//     }
+//     return true;
+// }
+

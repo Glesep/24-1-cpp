@@ -40,3 +40,31 @@ int main()
 
     return 0;
 }
+
+
+//교수님 풀이
+
+// #include <iostream>
+// using namespace std;
+
+// const int MAX = 100;
+
+// int main() {
+//     int N, K, num[MAX];
+//     cin >> N;
+//     for (int i=0; i<N; i++)
+//         cin >> num[i];
+//     cin >> K;
+//     int sum = 0, max_len = 0;
+//     int s = 0;
+//     for (int i=0; i<N; i++) {
+//         sum += num[i];
+//         while (sum > K)
+//             sum -= num[s++];
+
+//         if (i-s+1 > max_len)
+//             max_len = i-s+1;
+//     }
+//     cout << max_len;
+//     return 0;
+// }

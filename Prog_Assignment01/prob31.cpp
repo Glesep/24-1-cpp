@@ -45,3 +45,34 @@ int main()
 
     return 0;
 }
+
+
+
+
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     int flags[14] = { 0 };
+//     int k;
+//     for (int i=0; i<7; i++) {
+//         cin >> k;
+//         // k가 나왔다는 것을 표시
+//         flags[k] = 1;
+//     }
+//     int count = 0;
+//     for (int i=1; i<=13; i++) {
+//         // i가 있으면 카운트
+//         if (flags[i])
+//             count++;
+//         // 없으면 0 초기화 (연속적으로 나오는가)
+//         else
+//             count = 0;
+//         if (count == 5) {
+//             cout << "YES";
+//             return 0;
+//         }
+//     }
+//     cout << "NO";
+//     return 0;
+// }
