@@ -1,51 +1,20 @@
-// if, else if, else°¡ ¾î¶»°Ô µ¿ÀÛÇÏ´ÂÁö Á¦´ë·Î ¾ËÀÚ!
-
 #include <iostream>
 using namespace std;
 
-int main()
-{
+int main() {
     int s, t;
-    cin >> s >> t; // s, t´Â ¹Ù·Î ÀÔ·ÂÀÌ µÇ¹Ç·Î ÃÊ±âÈ­°¡ µÊ
+    cin >> s >> t;
+    int cnt1 = 0, cnt2 = 0, cnt3 = 0;
 
-    // ¾Æ·¡ÀÇ ¼¼ Á¤¼ö´Â ÀÔ·ÂÀ» ¹ŞÁö ¾ÊÀ¸¹Ç·Î ÀÚÃ¼ÀûÀ¸·Î ÃÊ±âÈ­¸¦ ½ÃÄÑÁà¾ß ÇÔ
-    int cnt_2 = 0;
-    int cnt_3 = 0;
-    int cnt_else = 0;
-
-    if (s <= t)
-    {
-        for (int i = s + 1; i < t; i++)
-        {
-            if (i % 2 == 0)
-                cnt_2++;
-            if (i % 3 == 0) // ÁÖÀÇ! ** else if¸¦ »ç¿ëÇßÀ» ¶§´Â À§ÀÇ if¹®ÀÌ Á¦¿ÜµÈ »óÅÂÀÌ¹Ç·Î 6ÀÇ ¹è¼ö µîµîÀÇ °ªÀÌ Á¦¿ÜµÈ Ã¼·Î ³ª¿Â´Ù **
-                cnt_3++;
-            if (i % 2 != 0 && i % 3 != 0)
-                cnt_else++;
-        }
-
-        cout << "2ÀÇ ¹è¼öÀÇ °³¼ö: " << cnt_2 << endl;
-        cout << "3ÀÇ ¹è¼öÀÇ °³¼ö: " << cnt_3 << endl;
-        cout << "³ª¸ÓÁö °³¼ö: " << cnt_else << endl;
+    for (int i = s; i <= t; i++) {
+        // ì¡°ê±´ì„ ì¡°ì‹¬í•  ê²ƒ
+        if (i % 2 == 0)
+            cnt1++;
+        if (i % 3 == 0)
+            cnt2++;
+        if (i % 2 != 0 && i % 3 != 0)
+            cnt3++;
     }
-
-    else
-    {
-        for (int i = t + 1; i < s; i++)
-        {
-            if (i % 2 == 0)
-                cnt_2++;
-            if (i % 3 == 0) // ÁÖÀÇ! ** else if¸¦ »ç¿ëÇßÀ» ¶§´Â À§ÀÇ if¹®ÀÌ Á¦¿ÜµÈ »óÅÂÀÌ¹Ç·Î 6ÀÇ ¹è¼ö µîµîÀÇ °ªÀÌ Á¦¿ÜµÈ Ã¼·Î ³ª¿Â´Ù **
-                cnt_3++;
-            if (i % 2 != 0 && i % 3 != 0)
-                cnt_else++;
-        }
-
-        cout << "2ÀÇ ¹è¼öÀÇ °³¼ö: " << cnt_2 << endl;
-        cout << "3ÀÇ ¹è¼öÀÇ °³¼ö: " << cnt_3 << endl;
-        cout << "³ª¸ÓÁö °³¼ö: " << cnt_else << endl;
-    }
-
+    cout << "The results are " << cnt1 << ", " << cnt2 << ", and " << cnt3 << endl; 
     return 0;
 }

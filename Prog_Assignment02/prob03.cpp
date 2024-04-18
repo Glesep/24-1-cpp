@@ -90,3 +90,51 @@ int main()
 
     return 0;
 }
+
+
+// #include <iostream>
+// #include <fstream>
+// #include <string>
+// #include <vector>
+// #include <cctype>
+// using namespace std;
+
+// vector<pair<string, int>> word_counters;
+
+// void tolowercase(string &str) {
+//     for (char &c: str)
+//         c = tolower(c);
+// }
+
+// int main() {
+//     string word;
+//     ifstream infile("input3.txt");
+//     while(infile>>word) {
+//         tolowercase(word);
+//         bool found = false;
+//         for(pair<string, int> &item: word_counters) {
+//             if (item.first == word) {
+//                 item.second++;
+//                 found = true;
+//                 break;
+//             }
+//         }
+//         if (!found) {
+//             pair<string, int> t(word, 1);
+//             word_counters.push_back(t);
+//         }
+//     }
+//     infile.close();
+
+//     for (int i=word_counters.size()-1; i>0; i--) {
+//         for (int j=0; j<i; j++) {
+//             if (word_counters.at(j).second > word_counters.at(j+1).second)
+//                 swap(word_counters.at(j), word_counters.at(j+1));
+//         }
+//     }
+
+//     for(pair<string, int> &item: word_counters)
+//         cout << item.first << ' ' << item.second << endl;
+
+//     return 0;
+// }

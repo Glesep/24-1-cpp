@@ -57,3 +57,31 @@ int main()
     cout << "The sum is " << sum << endl;
     return 0;
 }
+
+// #include <iostream>
+// #include <string>
+// using namespace std;
+// int main() {
+//     string s;
+//     getline(cin, s);
+//     int sum = 0, start = 0, pos = 0;
+//     if (s[0] == '+' || s[0] == '-')
+//         pos = 1;
+//     while(true) {
+//         int idx = s.find_first_of("+-", pos);
+//         if(idx == -1) {
+//             string part = s.substr(start);
+//             if(part == "") break;
+//             sum += stoi(part);
+//             break;
+//         }
+//         int count = idx - start;                    // + or - 제외
+//         string part = s.substr(start, count);
+//         sum += stoi(part);                          // + or - 포함 int변환
+//         pos = idx+1;                                // 찾기 시작은 + or - 이후부터
+//         start = idx;                                // + or - 문자열 포함 
+//     }
+//     cout << "The sum is " << sum << endl;
+    
+//     return 0;
+// }

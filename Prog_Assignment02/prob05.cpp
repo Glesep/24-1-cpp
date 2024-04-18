@@ -83,3 +83,65 @@ int main()
     return 0;
 }
 
+// #include <iostream>
+// #include <fstream>
+// #include <string>
+// #include <vector>
+// #include <cctype>
+// using namespace std;
+
+// vector<vector<string>> lines;
+
+// void tolowercase(string &str) {
+//     for (char &c: str)
+//         c = tolower(c);
+// }
+
+// // 문자를 단어로 나눠 벡터에 저장
+// vector<string> split_line(string &line) {
+//     vector<string> tokens;
+//     int start = 0, end;
+//     while((end = line.find(' ', start)) != -1) {
+//         string t = line.substr(start, end - start);
+//         if (t.size() > 0)
+//             tokens.push_back(t);
+//         start = end + 1;
+//     }
+//     string t = line.substr(start);
+//     if (t.size()>0)
+//         tokens.push_back(line.substr(start));
+//     return tokens;
+// }
+
+// // 나눈 단어들을 차례로 출력
+// void print_line(vector<string> &item) {
+//     for(auto t: item) {
+//         cout << t << ' ';
+//     }
+//     cout << ':' << item.size() << endl;
+// }
+
+// int main() {
+//     string line;
+//     ifstream infile("sample_lines.txt");
+//     while(getline(infile, line)) {
+//         vector<string> tokens = split_line(line);
+//         if (tokens.size() > 0)
+//             // 단어들을 한 벡터에 삽입
+//             lines.push_back(tokens);
+//     }
+//     infile.close();
+//     // 단어 개수 비교
+//     for (int i=lines.size()-1; i>0; i--) {
+//         for (int j=0; j<i; j++) {
+//             if (lines.at(j).size() < lines.at(j+1).size())
+//                 swap(lines.at(j), lines.at(j+1));
+//         }
+//     }
+//     // 라인 출력
+//     for(auto &item: lines) {
+//         print_line(item);
+//     }
+//     return 0;
+// }
+

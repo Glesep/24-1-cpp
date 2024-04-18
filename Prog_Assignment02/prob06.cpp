@@ -54,3 +54,66 @@ int main()
 
     return 0;
 }
+
+// #include <iostream>
+// #include <fstream>
+// #include <string>
+// #include <vector>
+// #include <cctype>
+// #include <algorithm>
+
+// using namespace std;
+// vector<string> words;
+
+// int main() {
+//     string str;
+//     ifstream infile("sample.txt");
+//     while(infile >> str) {
+            // 특수문자나 숫자 다 걷어내기
+//         int s = 0, t = str.length()-1;;
+//         while(s<str.length() && !isalnum(str[s]))
+//             s++;
+//         while(t>=0 && !isalnum(str[t]))
+//             t--;
+//          
+//         if (s<=t) {
+//                // pure_word 소문자화
+//             string pure_word = str.substr(s, t-s+1);
+//             for (int i=0; i<pure_word.length(); i++)
+//                 pure_word[i] = tolower(pure_word[i]);
+//               
+//             auto it = words.begin();
+//                // 사전식 정렬 
+//             while(it != words.end() && *it < pure_word)
+//                 it++;
+//                // 겹치는가 확인
+//             if (it != words.end() && *it==pure_word)
+//                 continue;
+//             words.insert(it, pure_word);
+//         }
+//     }
+//     infile.close();
+
+//     for (auto w: words)
+//         cout << w << endl;
+//     return 0;
+// }
+
+// //string trim(string str) {
+// //    int s = 0, t = str.length()-1;;
+// //    while(s<str.length() && !isalnum(str[s]))
+// //        s++;
+// //
+// //    while(t>=0 && !isalnum(str[t]))
+// //        t--;
+// //
+// //    if (s<=t)
+// //        return str.substr(s, t-s+1);
+// //    else
+// //        return "";
+// //}
+// //
+// //void tolowercase(string str) {
+// //    for (int i=0; i<str.length(); i++)
+// //        str[i] = tolower(str[i]);
+// //}

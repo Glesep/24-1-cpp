@@ -105,3 +105,82 @@ int main()
 
     return 0;
 }
+
+
+
+
+
+// #include <iostream>
+// #include <fstream>
+// #include <sstream>
+// #include <vector>
+// using namespace std;
+
+// vector<string> split_line(string line, char delimiter);
+
+// void insert_to_dict(pair<string,string> pair);
+// vector<pair<string,string>> dict;
+
+// int main() {
+//     string line;
+//     ifstream dict_file("shuffled_dict.txt");
+//     while(getline(dict_file, line)) {
+//         auto item = split_line(line, '\t');
+//         auto p = make_pair(item[0], item[1]);
+//         insert_to_dict(p);
+//     }
+//     dict_file.close();
+    
+//     string word;
+//     cin >> word;
+//     auto it=dict.begin();
+//     // it만 변화시키는 for문 
+//     for (; it!=dict.end() && it->first < word; it++);
+
+//     if (it->first == word) { // found
+//         cout << "Found:" << endl;
+//         cout << it->first << ": " << it->second << endl;
+//     }
+//     else if (it == dict.begin()){
+//         cout << "Not found" << endl;
+//         cout << "+ " << it->first << ": " << it->second << endl;
+//     }
+//     else if (it==dict.end()) {
+//         cout << "Not found" << endl;
+//         cout << "- " << (it-1)->first << ": " << (it-1)->second << endl;
+//     }
+//     else {
+//         cout << "Not found" << endl;
+//         auto it2 = it-1;
+//         cout << "- " << it2->first << ": " << it2->second << endl;
+//         cout << "+ " << it->first << ": " << it->second << endl;
+//     }
+
+//     cout << "Results of prefix search:" << endl;
+
+//     it=dict.begin();
+//     for (; it!=dict.end(); it++) {
+//         // word가 접두사인경우
+//         if ((it->first).find(word) == 0) {
+//             cout << it->first << ": " << it->second << endl;
+//         }
+//     }
+//     return 0;
+// }
+
+// void insert_to_dict(pair<string,string> pair) {
+//     auto it=dict.begin();
+//     for (; it!=dict.end() && it->first < pair.first; it++);
+//     // pair.first가 it->first보다 작을 때 
+//     it = dict.insert(it, pair);
+// }
+
+// vector<string> split_line(string line, char delimiter)
+// {
+//     vector<string> tokens;
+//     stringstream sstream(line);
+//     string str;
+//     while(getline(sstream, str, delimiter))
+//         tokens.push_back(str);
+//     return tokens;
+// }
