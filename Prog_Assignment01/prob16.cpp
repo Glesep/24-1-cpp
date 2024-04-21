@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    srand(time(NULL));
+    srand((unsigned int) time(NULL));
     int T = 1;
     int result1 = 0, result2 = 0;
 

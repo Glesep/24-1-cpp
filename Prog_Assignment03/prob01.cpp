@@ -23,6 +23,24 @@ void sorted_merge(vector<string> &first, vector<string> &second) {
     }
 }
 
+// void sorted_merge(vector<string> &first, vector<string> &second) {
+//     auto it1 = first.begin(), it2 = second.begin();
+//     // first 벡터 확인 중 second 벡터의 원소가 들어갈 자리가 있을 때
+//     while (it1 != first.end() && it2 != second.end()) {
+//         if (*it1 < *it2)
+//             it1++;
+//         else if (*it1 >= *it2) {
+//             it1 = first.insert(it1, *it2);
+//             it2++;
+//         }
+//     }
+//     // first 벡터의 끝까지 확인했는데 second 벡터의 원소가 남아 있을 때
+//     while (it2 != second.end()) {
+//         first.insert(first.end(), *it2);
+//         it2++;
+//     }
+// }
+
 int main() {
     int m, n;
     string str;

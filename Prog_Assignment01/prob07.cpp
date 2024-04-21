@@ -43,3 +43,19 @@ int main()
 
     return 0;
 }
+
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     int y1, m1, d1, y2, m2, d2;
+//     cin >> y1 >> m1 >> d1 >> y2 >> m2 >> d2;
+//     if (y1<y2 || y1==y2 && m1<m2 || y1==y2 && m1==m2 && d1<d2)
+//         cout << -1;
+//     // else 기능 잘 사용하기
+//     else if (y1==y2 && m1==m2 && d1==d2)
+//         cout << 0;
+//     else
+//         cout << 1;
+//     return 0;
+// }

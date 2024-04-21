@@ -63,3 +63,32 @@ int main()
 
     return 0;
 }
+
+
+// #include <iostream>
+// using namespace std;
+// const int MAX = 100;
+
+// int main() {
+//     int s[MAX], t[MAX], N;
+//     cin >> N;
+//     for (int i = 0; i < N; i++)
+//         cin >> s[i] >> t[i];
+
+//     for (int i=N-1; i>0; i--) {
+//         for (int j=0; j<i; j++) {
+//             if (s[j] > s[j+1] || s[j]==s[j+1] && t[j]>t[j+1]) {
+//                 int tmp = s[j];
+//                 s[j] = s[j+1];
+//                 s[j+1] = tmp;
+//                 tmp = t[j];
+//                 t[j] = t[j+1];
+//                 t[j+1] = tmp;
+//             }
+//         }
+//     }
+
+//     for (int i=0; i<N; i++)
+//         cout << s[i] << " " << t[i] << endl;
+//     return 0;
+// }

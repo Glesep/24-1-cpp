@@ -117,6 +117,7 @@ void Where_We_Go(int cell[][MAX], int& index_row_NOW, int& index_col_NOW)       
 //             if (is_blocked(x,y))
 //                 break;
 //             int dir = rand()%4;
+//              // 실제로 움직이기
 //             if (feasible_dir(x, y, dir)) {
 //                 x += offset[dir][0];
 //                 y += offset[dir][1];
@@ -138,7 +139,7 @@ void Where_We_Go(int cell[][MAX], int& index_row_NOW, int& index_col_NOW)       
 // bool feasible_dir(int x, int y, int dir) {
 //     int next_x = x+offset[dir][0];
 //     int next_y = y+offset[dir][1];
-
+//     // 갈 수 있을 경우 true
 //     if (next_x >= 0 && next_x < N && next_y >= 0 && next_y < N
 //         && maze[next_x][next_y] == 0)
 //         return true;
@@ -146,6 +147,7 @@ void Where_We_Go(int cell[][MAX], int& index_row_NOW, int& index_col_NOW)       
 // }
 
 // bool is_blocked(int x, int y) {
+//      // 방향 조절
 //     for (int d=0; d<4; d++) {
 //         if (feasible_dir(x, y, d))
 //             return false;

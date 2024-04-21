@@ -5,6 +5,7 @@
 #include <vector>
 using namespace std;
 
+// 안쓴듯
 vector<vector<int>> move = { {0, -1}, {1, -1}, {1, 1}, {1, 0}, {0, 1} };
 
 int main() {

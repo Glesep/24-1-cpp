@@ -17,23 +17,15 @@ int main()
     int cnt = 1, cnt_max = 0;           // 오름차순에 속해있는 원소의 개수를 구하는 것이므로 cnt = 1 시작
     for (int i = 1; i < N; i++)
     {
-        
         // 오름차순이라면...
         if (num[i] >= num[i-1])
             cnt++;
         // 오름차순이 아니라면...
         else
-        {
-            if (cnt_max < cnt)
-                cnt_max = cnt;          // cnt_max 갱신
-            
-            cnt = 1;                    // cnt 초기화
-        }
-
-        if (i == N-1)                   // 마지막 반복일 때...
-        {
-            if (cnt_max < cnt)
-                cnt_max = cnt;
+            cnt = 1;
+        // 매 반복마다 cnt_max 갱신
+        if (cnt > cnt_max) {
+            cnt_max = cnt;
         }
     }
 

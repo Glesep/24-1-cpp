@@ -56,12 +56,14 @@ int main()
 //         cin >> num[i];
 //     cin >> K;
 //     int sum = 0, max_len = 0;
+//      // 앞 인덱스
 //     int s = 0;
 //     for (int i=0; i<N; i++) {
 //         sum += num[i];
 //         while (sum > K)
+//              // 앞에서부터 뺀다.
 //             sum -= num[s++];
-
+//          // 뒤 인덱스 - 앞 인덱스 + 1 == 길이
 //         if (i-s+1 > max_len)
 //             max_len = i-s+1;
 //     }

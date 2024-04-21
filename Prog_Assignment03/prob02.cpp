@@ -29,6 +29,26 @@ void compute_set(vector<int> &A, vector<int> &B) {
     }
 }
 
+// void compute_set(vector<int> &A, vector<int> &B) {
+//     auto it1 = A.begin(), it2 = B.begin();
+//     while (it1 != A.end() && it2 != B.end()) {
+//         if (*it1 < *it2)
+//             it1++;
+//         else if (*it1 > *it2) {
+//             it1 = A.insert(it1, *it2);
+//             it2++;
+//         }
+//         else {
+//             it1 = A.erase(it1);
+//             it2++;
+//         }
+//     }
+//     while (it2 != B.end()) {
+//         A.insert(A.end(), *it2);
+//         it2++;
+//     }
+// }
+
 int main() {
     int m, n, k;
     vector<int> first, second;

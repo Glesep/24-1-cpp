@@ -18,10 +18,7 @@ int main()
     {
         cin >> num;
         if (num >= leader[cnt-1])                           // leader 배열의 인덱스는 i로 다루면 안 됨
-        {
-            leader[cnt] = num;
-            cnt++;
-        }
+            leader[cnt++] = num;
     }
 
     cout << cnt << ": ";

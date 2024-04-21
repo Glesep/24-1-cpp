@@ -21,3 +21,20 @@ int main()
 
     return 0;
 }
+
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     int n;
+//     cin >> n;
+//     int prev1 = 1, prev2 = 1, cur;
+//     // n이 2부터 출발하니 반복 시작을 i = 2로 설정
+//     for (int i = 2; i <= n; i++) {
+//         cur = prev1 + prev2;
+//         prev2 = prev1;
+//         prev1 = cur;
+//     }
+//     cout << cur;
+//     return 0;
+// }

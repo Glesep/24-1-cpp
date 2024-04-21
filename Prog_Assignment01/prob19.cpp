@@ -12,19 +12,18 @@ int main()
         cin >> num[i];
 
     int k;
-    int min = 0, result = num[0];
     cin >> k;
+    // 초기값 잘 잡기
+    int min = k-num[0], result = num[0];
     
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i < n; i++)
     {
-        int len = 0;
-        len = k - num[i];                                   // 거리를 구함
+        int len = k - num[i];  
+                                        
         if (len < 0)                                        // 절댓값화 시키기 
             len *= -1;
 
-        if (i == 0)                                         // 초깃값 잡아주기
-            min = len;
-        else if (len < min)                                 // k와의 거리가 제일 짧은 정수 찾기
+        if (len < min)                                 // k와의 거리가 제일 짧은 정수 찾기
         {
             min = len;
             result = num[i];
