@@ -23,6 +23,7 @@ int main()
 
     getline(infile, str);                   // 첫번쨰 줄 받아오기
     
+    // 문자열을 stream으로 변환, 타입에 맞게 넣을 수 있음
     istringstream iss(str);
     iss >> rows >> cols;
 

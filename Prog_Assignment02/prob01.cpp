@@ -82,3 +82,50 @@ int main()
 
     return 0;
 }
+
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+// using namespace std;
+
+// int compare_lex(int a, int b) {
+//     int p = 1, q =1;
+//     while(p*10 <= a) p*=10;
+//     while(q*10 <= b) q*=10;
+//     while(p>0 && q>0) {
+//         // 맨 앞 자리 확인
+//         int d1 = a/p, d2 = b/q;
+//         // 앞자리 제외한 자리 저장
+//         a %= p, b %= q;
+//         // 맨 앞자리 기준 비교
+//         if (d1 < d2) return -1;
+//         else if (d1 > d2) return 1;
+//         p /= 10, q /= 10;
+//     }
+//     // 자릿수가 다르면
+//     if (p>0) return 1;
+//     if (q>0) return -1;
+//     return 0;
+// }
+
+// int main() {
+//     vector<int> numbers;
+//     int n, k;
+//     cin >> n;
+//     for (int i=0; i<n; i++) {
+//         cin >> k;
+//         numbers.push_back(k);
+//     }
+
+//     for (int i=n-1; i>0; i--) {
+//         for (int j=0; j<i; j++) {
+//             if (compare_lex(numbers.at(j), numbers.at(j+1)) > 0)
+//                 swap(numbers[j], numbers[j+1]);
+//         }
+//     }
+//     for (int i=0; i<n; i++) {
+//         cout << numbers.at(i) << ' ';
+//     }
+
+//     return 0;
+// }

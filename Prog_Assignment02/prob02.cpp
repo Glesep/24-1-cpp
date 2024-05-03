@@ -64,3 +64,24 @@ int main() {
 
 //     return 0;
 // }
+
+
+
+//int main() {
+//    string line;
+//
+//    while(1) {
+//        getline(cin, line);
+//        if (line == "exit") break;
+//        int k=0;
+//        stringstream ss;
+//        for (int i=0; i<line.length(); i++) {
+//            if (!isspace(line[i]) || i>0 && !isspace(line[i-1]))
+//                ss << line[i], k++;
+//        }
+//        if ()
+//        ss << ":" << k;
+//        cout << ss.str() << endl;
+//    }
+//
+//    return 0;

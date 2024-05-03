@@ -25,7 +25,7 @@ int main()
         if (*it != *(it+1) || it+1 == num.end())
             it++;
         else if (*it == *(it+1))                                // 조건문을 이거 먼저 놔두면 마지막에 이 코드에 접근이 됨!!!
-            num.erase(it+1);
+            it = num.erase(it);
         
     }
     

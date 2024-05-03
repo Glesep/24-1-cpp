@@ -36,23 +36,10 @@ int main()
     string newWord;
     cin >> newWord;
     int count = 0;
-
-    // 접두사 유무 체크
-    for (int i = 0; i < words.size(); i++)
-    {
-        // 접두사인지 확인
-        bool prefix = true;
-        for (int j = 0; j < newWord.size(); j++)
-        {
-            if (newWord[j] != words[i][j])
-            {
-                prefix = false;
-                break;
-            }
-        }
-        //접두사인 경우
-        if (prefix)
-        {
+    
+    // 접두사 찾을 떄
+    for (int i = 0; i < (int)words.size(); i++) {
+        if (words[i].find(newWord, 0) == 0) {
             cout << words[i] << endl;
             count++;
         }
