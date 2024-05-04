@@ -147,30 +147,7 @@ public:
         circleToCompare = makeCircle(infile);
         infile.close();
     }
-    // 전체 도형 출력 (디버그용) figure == "C" || "R"
-    void printFigureAll(string figure) {
-        if (figure == "R") {
-            for (auto i : rects) {
-                cout << "R ";
-                cout << i.leftDown.get_x() << " " << i.leftDown.get_y() << " ";
-                cout << i.rightUp.get_x() << " " << i.rightUp.get_y() << endl;
-            }
-        }
-
-        if (figure == "C") {
-            for (auto i : circles) {
-                cout << "C ";
-                cout << i.midpoint.get_x() << " " << i.midpoint.get_y() << " ";
-                cout << i.radius << endl;
-            }
-        }
-
-        if (figure == "target") {
-            cout << "C ";
-            cout << circleToCompare.midpoint.get_x() << " " << circleToCompare.midpoint.get_y() << " ";
-            cout << circleToCompare.radius << endl;
-        }
-    }
+    
     double dist(int x1, int y1) {
         return sqrt(pow(x1-circleToCompare.midpoint.get_x(), 2) + pow(y1-circleToCompare.midpoint.get_y(), 2));
     }
