@@ -36,25 +36,32 @@ public:
 class Circle {
 friend class Controller;
 private: 
-    Point midpoint;
+    Point *midpoint;
     int radius;
 
 public:
     Circle() = default;
-    Circle(Point mp, int r) : midpoint(mp), radius(r) {}
+    Circle(Point *mp, int r) : midpoint(mp), radius(r) {}
+    ~Circle() {
+        delete midpoint;        // midpoint 동적 객체 삭제
+    }
 };
 
 // 사각형 클래스 Rect
 class Rect {
 friend class Controller;
 private:
-    Point leftDown;
-    Point rightUp;
+    Point *leftDown;
+    Point *rightUp;
 
 public:
     Rect() = default;
     // 조건이 맞을 때 정의되야 함
-    Rect(Point ld, Point ru) : leftDown(ld), rightUp(ru) {}
+    Rect(Point *ld, Point *ru) : leftDown(ld), rightUp(ru) {}
+    ~Rect() {
+        delete leftDown;
+        delete rightUp;
+    }
 };
 
 // ======================================================Controller=====================================================================
@@ -68,8 +75,23 @@ private:
     vector<Circle *> intersectedCircles;
     Circle *circleToCompare;
 
+    void clearMembers() {
+        delete circleToCompare;
+
+        for (auto p: rects)
+            delete p;
+        rects.clear();
+
+        for (auto p: circles)
+            delete p;
+        circles.clear();
+    }
+
 public:
-   
+    ~Controller() {
+        clearMembers();
+    }
+
     // 도형의 개수를 세는 함수
     void countFigure(string num) {
         figureCount = stoi(num);
@@ -93,11 +115,7 @@ public:
         in >> tmpY;
         ru->set_y(tmpY);
 
-        Rect *rect = new Rect(*ld, *ru);
-
-        // 동적 할당한 객체들 삭제
-        delete ld;
-        delete ru;
+        Rect *rect = new Rect(ld, ru);          // ld, ru를 여기서 지워버리면 안됨!! leftDown, rightUp 포인터가 가리키는 객체가 없어져버림
 
         // 동적 할당된 변수의 주소 반환
         return rect;
@@ -118,11 +136,8 @@ public:
         // 반지름 길이
         in >> radius;
         
-        Circle *circle = new Circle(*mp, radius);
+        Circle *circle = new Circle(mp, radius);        // mp를 여기서 지워버리면 안됨!! midPoint 포인터가 가리키는 객체가 없어져버림
         
-        // 동적 할당한 객체 삭제
-        delete mp;
-
         // 주소 반환
         return circle;
     }
@@ -168,11 +183,11 @@ public:
     }
     
     double dist(int x1, int y1) {
-        return sqrt(pow(x1-circleToCompare->midpoint.get_x(), 2) + pow(y1-circleToCompare->midpoint.get_y(), 2));
+        return sqrt(pow(x1-circleToCompare->midpoint->get_x(), 2) + pow(y1-circleToCompare->midpoint->get_y(), 2));
     }
     
     double rectArea(Rect *rect) {
-        return ((rect->rightUp.get_x() - rect->leftDown.get_x()) * (rect->rightUp.get_y() - rect->leftDown.get_y()));
+        return ((rect->rightUp->get_x() - rect->leftDown->get_x()) * (rect->rightUp->get_y() - rect->leftDown->get_y()));
     }
 
     double circleArea(Circle *circle) {
@@ -182,22 +197,22 @@ public:
   
     // 비교 대상인 원과 사각형이 교차하는지 확인
     bool isIntersect_Rect(Rect *rect) {
-        if (dist(rect->leftDown.get_x(), rect->leftDown.get_y()) <= circleToCompare->radius ||
-            dist(rect->leftDown.get_x(), rect->rightUp.get_y()) <= circleToCompare->radius  ||
-            dist(rect->rightUp.get_x(), rect->rightUp.get_y()) <= circleToCompare->radius   ||
-            dist(rect->rightUp.get_x(), rect->leftDown.get_y()) <= circleToCompare->radius ) {
+        if (dist(rect->leftDown->get_x(), rect->leftDown->get_y()) <= circleToCompare->radius ||
+            dist(rect->leftDown->get_x(), rect->rightUp->get_y()) <= circleToCompare->radius  ||
+            dist(rect->rightUp->get_x(), rect->rightUp->get_y()) <= circleToCompare->radius   ||
+            dist(rect->rightUp->get_x(), rect->leftDown->get_y()) <= circleToCompare->radius ) {
                 return true;
             }
         
-        if (circleToCompare->midpoint.get_x() >= rect->leftDown.get_x() && circleToCompare->midpoint.get_x() <= rect->rightUp.get_x() &&
-            circleToCompare->midpoint.get_y() >= rect->leftDown.get_y() && circleToCompare->midpoint.get_y() <= rect->rightUp.get_y()) {
+        if (circleToCompare->midpoint->get_x() >= rect->leftDown->get_x() && circleToCompare->midpoint->get_x() <= rect->rightUp->get_x() &&
+            circleToCompare->midpoint->get_y() >= rect->leftDown->get_y() && circleToCompare->midpoint->get_y() <= rect->rightUp->get_y()) {
                 return true;
             }
 
-        if ((circleToCompare->midpoint.get_x()-rect->rightUp.get_x() <= circleToCompare->radius || rect->leftDown.get_x()-circleToCompare->midpoint.get_x() <= circleToCompare->radius) 
-            && circleToCompare->midpoint.get_y() >= rect->leftDown.get_y() && circleToCompare->midpoint.get_y() <= rect->rightUp.get_y() ||
-            (circleToCompare->midpoint.get_y()-rect->rightUp.get_y() <= circleToCompare->radius || rect->leftDown.get_y()-circleToCompare->midpoint.get_y() <= circleToCompare->radius)
-            && circleToCompare->midpoint.get_x() >= rect->leftDown.get_x() && circleToCompare->midpoint.get_x() <= rect->rightUp.get_x()) {
+        if ((circleToCompare->midpoint->get_x()-rect->rightUp->get_x() <= circleToCompare->radius || rect->leftDown->get_x()-circleToCompare->midpoint->get_x() <= circleToCompare->radius) 
+            && circleToCompare->midpoint->get_y() >= rect->leftDown->get_y() && circleToCompare->midpoint->get_y() <= rect->rightUp->get_y() ||
+            (circleToCompare->midpoint->get_y()-rect->rightUp->get_y() <= circleToCompare->radius || rect->leftDown->get_y()-circleToCompare->midpoint->get_y() <= circleToCompare->radius)
+            && circleToCompare->midpoint->get_x() >= rect->leftDown->get_x() && circleToCompare->midpoint->get_x() <= rect->rightUp->get_x()) {
                 return true;
             }
         return false; 
@@ -206,12 +221,13 @@ public:
     }
     // 비교 대상인 원과 원이 교차하는지 확인
     bool isIntersect_Circle(Circle *circle) {
-        if (dist(circle->midpoint.get_x(), circle->midpoint.get_y()) < circle->radius + circleToCompare->radius)
+        if (dist(circle->midpoint->get_x(), circle->midpoint->get_y()) < circle->radius + circleToCompare->radius)
             return true;
         return false; 
     }
 
     // 비교 대상인 원과 도형이 교차하면 벡터에 넣기
+    // intersectedRects는 rects와 사각형 객체를 공유 -> 굳이 intersectedRects에서 Garbage 고려 안해도 됨
     void intersectFigures() {
         for (auto it = rects.begin(); it < rects.end(); it++) {
             //*it == 포인터 변수
@@ -229,11 +245,13 @@ public:
     }
     // 면적 비교
     pair<vector<Rect *>::iterator, vector<Circle *>::iterator> compareArea() {
-        
+        vector<Rect *>::iterator it_RectMin;
+        vector<Circle *>::iterator it_CircleMin; 
+
         int minRect = rectArea(*intersectedRects.begin());
         int minCircle = circleArea(*intersectedCircles.begin());
-        vector<Rect *>::iterator it_RectMin = intersectedRects.begin();
-        vector<Circle *>::iterator it_CircleMin = intersectedCircles.begin();
+        it_RectMin = intersectedRects.begin();
+        it_CircleMin = intersectedCircles.begin();
         for (auto it = intersectedRects.begin(); it < intersectedRects.end(); it++) {
             if (rectArea(*it) < minRect) {
                 minRect = rectArea(*it);
@@ -257,16 +275,17 @@ public:
         // p.second == circle 포인터벡터의 이터레이터, p.first == rect 포인터벡터의 이터레이터
         // *p.second == circle 포인터 벡터, *p.first == rect 포인터 벡터
         // *보다 -> 가 더 우선순위 높음
+        // intersectedCircles, intersectedRects는 각각 circles, rects와 도형 객체를 공유하기 때문에 Garbage 신경 안써도 됨
         if ((circleArea(*p.second) < rectArea(*p.first) || intersectedRects.size() == 0) && intersectedCircles.size() != 0) {
             
-             cout << "C " << (*p.second)->midpoint.get_x() << " " << (*p.second)->midpoint.get_y() << " " << (*p.second)->radius;
+             cout << "C " << (*p.second)->midpoint->get_x() << " " << (*p.second)->midpoint->get_y() << " " << (*p.second)->radius;
              cout << endl;
              intersectedCircles.erase(p.second);
          }
 
-        if ((circleArea(*p.second) > rectArea(*p.first) || intersectedCircles.size() == 0)&& intersectedRects.size() != 0) {
-            cout << "R " << (*p.first)->leftDown.get_x() << " " << (*p.first)->rightUp.get_x() << " "
-                         << (*p.first)->leftDown.get_y() << " " << (*p.first)->rightUp.get_y();
+        if ((circleArea(*p.second) > rectArea(*p.first) || intersectedCircles.size() == 0) && intersectedRects.size() != 0) {
+            cout << "R " << (*p.first)->leftDown->get_x() << " " << (*p.first)->rightUp->get_x() << " "
+                         << (*p.first)->leftDown->get_y() << " " << (*p.first)->rightUp->get_y();
             cout << endl;
             intersectedRects.erase(p.first);
         }
