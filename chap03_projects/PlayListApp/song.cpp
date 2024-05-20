@@ -18,6 +18,7 @@ Song::Song(string ti, string ar, string al, string mv):
 }
 
 Song::~Song() {
+    // 자기가 들어가 있는 플레이리스트에 찾아가서 자가를 지워달라고 요청
     for (auto pl: playlists)
         pl->delete_song_by_id(id);
 }

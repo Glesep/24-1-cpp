@@ -11,20 +11,26 @@ void process_command(MusicManager manager) {
         if (command == "load") {
             cin >> filename;
             manager.load(filename);                     // MusicManager::load()
-        } else if (command == "playlist") {
+        } 
+        else if (command == "playlist") {
             manager.list_playlist();
-        } else if (command == "show") {
+        } 
+        else if (command == "show") {
             getline(cin, p_name);
             manager.show_plist(trim(p_name));
-        } else if (command == "find") {
+        } 
+        else if (command == "find") {
             getline(cin, keyword);
             manager.find_song(trim(keyword));           // 공백문자 제거
-        } else if (command == "add") {
+        } 
+        else if (command == "add") {
             manager.get_and_add_song();
-        } else if (command == "delete") {
+        }
+        else if (command == "delete") {
             cin >> song_id;
             manager.delete_song(song_id);
-        } else if (command == "addtolist") {
+        } 
+        else if (command == "addtolist") {
             cin >> song_id;
             getline(cin, p_name);
             manager.add_to_list(song_id, trim(p_name));
@@ -41,6 +47,10 @@ void process_command(MusicManager manager) {
         else if (command == "play") {
             cin >> song_id;
             manager.play(song_id);
+        }
+        else if (command == "save") {
+            cin >> filename;
+            // manager.save();
         }
         else if (command == "exit") {
             break;

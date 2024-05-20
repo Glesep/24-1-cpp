@@ -45,6 +45,7 @@ void MusicManager::status(ostream &out) {
 }
 
 void MusicManager::load(string filename) {
+
     ifstream infile;
     infile.open(filename);
     string row;
@@ -158,4 +159,11 @@ void MusicManager::play(int sid) {
     auto it = find_playlist(string("All"));
     auto song_ptr = (*it)->find_songs_by_id(sid);
     song_ptr->play();
+}
+
+void MusicManager::save(string filename) {
+    ofstream outfile;
+    outfile.open(filename);
+    
+    outfile.close();
 }
