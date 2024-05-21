@@ -17,6 +17,7 @@ public:
 
     void add_song(Song *song);
     void print(ostream &out);
+    void print_outfile (ostream &out);
 
     vector<Song *> find_songs_by_keyword(string keyword);
     Song *find_songs_by_id(int sid);

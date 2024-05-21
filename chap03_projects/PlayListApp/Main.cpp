@@ -50,7 +50,7 @@ void process_command(MusicManager manager) {
         }
         else if (command == "save") {
             cin >> filename;
-            // manager.save();
+            manager.save(filename);
         }
         else if (command == "exit") {
             break;

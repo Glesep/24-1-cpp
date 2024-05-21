@@ -33,7 +33,8 @@ public:
     string get_artist();
 
     void print(ostream &out);
-
+    void print_outfile(ostream &out);
+    
     void register_playlist(PlayList *ptr_plist);
     void unregister_playlist(string plist_name);
     void play();

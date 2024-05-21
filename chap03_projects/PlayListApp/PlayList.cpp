@@ -24,6 +24,13 @@ void PlayList::print (ostream &out) {
     }
 }
 
+void PlayList::print_outfile (ostream &out) {
+    for (auto song_ptr: tracks) {
+        song_ptr->print_outfile(out);
+        out << endl;
+    }
+}
+
 vector<Song *> PlayList::find_songs_by_keyword(string keyword) {
     vector<Song *> result;
     for (Song *item: tracks) {

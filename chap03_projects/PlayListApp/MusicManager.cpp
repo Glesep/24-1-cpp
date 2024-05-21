@@ -101,6 +101,8 @@ void MusicManager::get_and_add_song() {
 
     Song *s_ptr = new Song(title, artist, album, url);
     vector<string> plists = split_line(plist_names, ':');
+    // All 플레이리스트에도 추가
+    plists.push_back("All");
     add_song(s_ptr, plists);
 }
 
@@ -164,6 +166,9 @@ void MusicManager::play(int sid) {
 void MusicManager::save(string filename) {
     ofstream outfile;
     outfile.open(filename);
-    
+    // All 플레이리스트를 가리키는 이터레이터 획득
+    auto it_all = find_playlist(string("All"));
+    // All 플레이리스트 접근 
+    (*it_all)->print_outfile(outfile);
     outfile.close();
 }

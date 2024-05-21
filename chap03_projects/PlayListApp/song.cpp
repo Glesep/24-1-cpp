@@ -48,6 +48,24 @@ void Song::print(ostream &out) {
         out << plist->get_name() << ", ";
 }
 
+void Song::print_outfile(ostream &out) {
+    out << title << "," << artist << "," << album << "," << mv_url << ",";
+    int pl_size = 0;
+    if (playlists.size() != 0) {
+        pl_size = playlists.size();
+    }
+    for(auto index = 0; index < pl_size; index++) {
+        // 플레이리스트 중 All은 넘기기
+        if (playlists[index]->get_name() == "All")
+            continue;
+        if (index == 0) {
+            out << playlists[index]->get_name();
+            continue;
+        }
+        out << ":" << playlists[index]->get_name();
+    }
+}
+
 void Song::unregister_playlist(string plist_name) {
     for (auto it = playlists.begin(); it != playlists.end(); it++) {
         if((*it)->get_name() == plist_name) {
