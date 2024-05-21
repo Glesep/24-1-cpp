@@ -1,3 +1,3 @@
 .vscode/
 *.exe
-chap03_projects/build/Debug/
+.chap03_projects/build/Debug/
