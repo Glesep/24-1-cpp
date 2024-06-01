@@ -20,4 +20,5 @@ public:
     void show_all_events();
     void load_data_file(string file_name);
     void delete_event(int id);
+    void save(string file_name);
 };

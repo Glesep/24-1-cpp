@@ -1,7 +1,7 @@
 #include "EventScheduler.h"
 
 void process_command(EventScheduler scheduler) {
-    string command, event_type, input, content, keyword;
+    string command, event_type, input, content, keyword, file_name;
     while(1) {
         cout << "$ ";
         cin >> command;
@@ -40,6 +40,10 @@ void process_command(EventScheduler scheduler) {
             int id;
             cin >> id;
             scheduler.delete_event(id);
+        }
+        else if (command == "save") {       // 스케줄 저장
+            cin >> file_name;
+            scheduler.save(file_name);
         }
         else if (command == "exit") {
             break;

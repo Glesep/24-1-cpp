@@ -116,3 +116,13 @@ void EventScheduler::delete_event(int id) {
     }
     cout << "No such event exists." << endl;
 }
+
+void EventScheduler::save(string file_name) {
+    ofstream outfile(file_name);
+    for (auto ev: events) {
+        ev->print(outfile);
+        outfile << endl;
+    }
+    outfile.close();
+    cout << "Complete." << endl;
+}

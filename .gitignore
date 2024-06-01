@@ -1,3 +1,4 @@
 .vscode/
 *.exe
-.chap03_projects/build/Debug/
+.chap03_projects/PlayLsitApp/build/Debug/
+.chap04_projects/EventScheduler_RE/build/Debug/
