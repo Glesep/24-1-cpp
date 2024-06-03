@@ -1,11 +1,12 @@
 #pragma once
+
 class GameObject {
 protected:
-    int distance;   // 한번 이동 거리
     int x, y;
+    int distance;   // 한번 이동 거리
 public:
     GameObject();
-    GameObject(int startX, int startY, int distance);   // 초기 위치와 이동거리 설정
+    GameObject(int startX, int startY, int distance_input);   // 초기 위치와 이동거리 설정
 
     virtual ~GameObject();   // 가상 소멸자
 
@@ -29,7 +30,7 @@ public:
 
     void move() override;
     char getShape() override;
-    void setMovingKey(char mk) { movingKey = mk; }
+    void setMovingKey(char mk);
 };
 // ===============================Monster 시작=============================
 class Monster: public GameObject {

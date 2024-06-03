@@ -18,5 +18,6 @@ public:
     bool isFail();
     void printGrid();   // 격자판 그리는 함수
     void init();
+    void refreshGrid(); // 그리드 리프레쉬
     
 };

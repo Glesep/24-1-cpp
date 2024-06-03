@@ -9,10 +9,20 @@ Game::Game() = default;
 Game::Game(Human h, Monster m, Food f): human(h), monster(m), food(f) {}
 
 void Game::humanMove() {
-    cout << "왼쪽(a), 아래(s), 위(d), 오른쪽(f) ";
     char mk;
-    cin >> mk;
-    human.setMovingKey(mk);
+    while (true) {
+        cout << "Left(a), Down(s), Up(d), Right(f) : ";
+        cin >> mk;
+        if (mk == 'a' || mk == 's' || mk == 'd' || mk == 'f'){
+            human.setMovingKey(mk);
+            break;
+        }
+            
+        else {
+            cout << "Wrong key." << endl;
+        }
+    }
+    
 }
 
 void Game::moveAll() {  // 모든 요소 움직이게 하는 함수
@@ -26,7 +36,7 @@ bool Game::isEat() {    // 먹었는가 확인하는 함수
         return true;
     
     else
-        false;
+        return false;
 }
 
 bool Game::isFail() {   // 실패 여부 확인 함수
@@ -34,7 +44,7 @@ bool Game::isFail() {   // 실패 여부 확인 함수
         return true;
     
     else
-        false;
+        return false;
 }
 
 void Game::printGrid() {    // 배열로 조지기
@@ -46,21 +56,7 @@ void Game::printGrid() {    // 배열로 조지기
     }
 }
 
-void Game::init(){
-    srand((unsigned int) time(NULL));
-    do {
-        human.setX(rand() % 20);
-        human.setY(rand() % 10);
-
-        monster.setX(rand() % 20);
-        monster.setY(rand() % 10);
-
-        food.setX(rand() % 20);
-        food.setY(rand() % 10);
-    } while ((human.getX() == monster.getX() && human.getY() == monster.getY()) ||
-            (human.getX() == food.getX() && human.getY() == food.getY()) ||
-            (food.getX() == monster.getX() && food.getY() == monster.getY()));      // 겹치면 한 번 더 초기화
-
+void Game::refreshGrid() {
     // 그리드 초기화
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 20; j++) {
@@ -71,7 +67,28 @@ void Game::init(){
             else if (food.getX() == i  && food.getY() == j)
                 grid[i][j] = food.getShape();
             else
-                cout << '-';
+                grid[i][j] = '-';
         }
     }
 }
+
+// 게임 초기 설정
+void Game::init(){
+    srand((unsigned int) time(NULL));
+    do {
+        human.setX(rand() % 10);
+        human.setY(rand() % 20);
+
+        monster.setX(rand() % 10);
+        monster.setY(rand() % 20);
+
+        food.setX(rand() % 10);
+        food.setY(rand() % 20);
+    } while ((human.getX() == monster.getX() && human.getY() == monster.getY()) ||
+            (human.getX() == food.getX() && human.getY() == food.getY()) ||
+            (food.getX() == monster.getX() && food.getY() == monster.getY()));      // 겹치면 한 번 더 초기화
+
+    // 그리드 초기화
+    Game::refreshGrid();
+}
+
