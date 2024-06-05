@@ -24,18 +24,19 @@ public:
 class Human: public GameObject {
 private:
     char movingKey;
+    friend class Game;
 public:
     Human();
     Human(int startX, int startY);
 
     void move() override;
     char getShape() override;
-    void setMovingKey(char mk);
 };
 // ===============================Monster 시작=============================
 class Monster: public GameObject {
 private:
     int movingKey;
+    friend class Game;      // 디버그용
 public:
     Monster();
     Monster(int startX, int startY);
@@ -50,6 +51,7 @@ private:
     int movingKey;
     int count_move = 0;
     int count_stop = 0;
+    friend class Game;      // 디버그용
 public:
     Food();
     Food(int startX, int startY);
