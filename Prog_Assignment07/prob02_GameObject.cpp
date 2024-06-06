@@ -78,11 +78,12 @@ void Food::move() {
         else if (movingKey == 4 && y < 19)  { y += distance; }
         
         count_move++;
-        if (count_move + count_stop == 5) {
-            count_move = 0;
-            count_stop = 0;
-        }
     }
+    if (count_move + count_stop == 5) {
+        count_move = 0;
+        count_stop = 0;
+    }
+    cout << "count_move: " << count_move << "count_stop: " << count_stop << endl;
 }
 
 char Food::getShape() {

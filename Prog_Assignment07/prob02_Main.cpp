@@ -1,7 +1,7 @@
 // Human의 Food 먹기 게임!!
 
 // 현재 움직이는 기능은 구현
-
+// 먹어서 끝나는 것 까지 구현
 #include "prob02_Game.h"
 #include <iostream>
 using namespace std;
@@ -36,6 +36,9 @@ void processManager(Game game) {
         game.moveAll();
         game.getXYAll();
 
+        game.refreshGrid();
+        game.printGrid();
+
         if (game.isEat()) {
             cout << "Human is Winner!!" << endl;
             break;
@@ -45,8 +48,6 @@ void processManager(Game game) {
             cout << "Fail..." << endl;
             break;
         }
-        game.refreshGrid();
-        game.printGrid();
     }
 }
 

@@ -47,9 +47,14 @@ void Game::refreshGrid() {
     // 그리드 초기화
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 20; j++) {
-            if (human.getX() == i  && human.getY() == j)
-                grid[i][j] = human.getShape();
-            else if (monster.getX() == i  && monster.getY() == j)
+            if (human.getX() == i  && human.getY() == j) {
+                if (human.getX() == monster.getX() && human.getY() == monster.getY()) {             // human과 monster가 겹칠 때
+                    grid[i][j] = monster.getShape();
+                }
+                else
+                    grid[i][j] = human.getShape();
+            }
+            else if (monster.getX() == i  && monster.getY() == j) 
                 grid[i][j] = monster.getShape();
             else if (food.getX() == i  && food.getY() == j)
                 grid[i][j] = food.getShape();
