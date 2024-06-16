@@ -2,8 +2,8 @@
 using namespace std;
 
 class complex {
-  
     double i,j;
+
 public:
     // 디폴트 생성자가 없었음
     complex() = default;
