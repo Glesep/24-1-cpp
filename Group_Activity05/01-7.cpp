@@ -18,28 +18,28 @@ public:
         j = b;
     }
 
-    complex operator+(complex c) {
+    complex operator+(complex &c) {
         complex temp;
         temp.i = this->i + c.i;
         temp.j = this->j + c.j;
         return temp;
     }
 
-    complex operator-(complex c) {
+    complex operator-(complex &c) {
         complex temp;
         temp.i = this->i - c.i;
         temp.j = this->j - c.j;
         return temp;
     }
 
-    complex operator*(complex c) {
+    complex operator*(complex &c) {
         complex temp;
         temp.i = this->i * c.i + this->j * c.j;
         temp.j = this->i * c.j + this->j * c.i;
         return temp;
     }
 
-    complex operator/(complex c) {
+    complex operator/(complex &c) {
         complex r (c.i, (-1)*(c.j));
         // 분모 구하기,
         double denominator = c.i*c.i + c.j*c.j;

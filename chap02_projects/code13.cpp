@@ -9,15 +9,15 @@ private:
     int year, month, day;
     vector<int> short_months {4, 6, 9, 11};     // 30일까지 있는 달
     bool is_short_month() {
-        return find(short_months.begin(), short_months.end(), month) != short_months.end();
+        return find(short_months.begin(), short_months.end(), month) != short_months.end();             // 30일까지만 있는 달인 경우인지 확인
     }
 
     bool last_day_of_month() {
-        return month == 2 && day == 28 || is_short_month() && day == 30 || day == 31;
+        return month == 2 && day == 28 || is_short_month() && day == 30 || day == 31;                   // 달의 마지막 날인지 확인
     }
 
     bool last_day_of_year() {
-        return month == 12 && day == 31;
+        return month == 12 && day == 31;                                                                // 1년의 마지막 날인지 확인
     }
 
 public:
@@ -54,7 +54,7 @@ public:
         return *this > rhs || *this == rhs;
     }
 
-    // 증감연산 (++, --)는 자신의 참조를 반환하여야 한다.
+    // 전위 증감연산 (++, --)는 자신의 참조를 반환하여야 한다.
     // 전위 증가 연산자
     Date &operator++() {
         if (last_day_of_year()) {
@@ -112,7 +112,7 @@ public:
         }
     }
 
-    // 날짜에 k일을 더한 날짜를 반환
+    // 날짜에 k일을 더한 날짜를 반환 (멤버함수는 왼쪽 피연산자로 객체 자신을 받는다)
     Date operator+(int k) {
         Date temp = *this;
 
@@ -121,7 +121,7 @@ public:
         return temp;
     }
 
-    // d + 3과 3 + d 둘 다 가능하게 할려면...
+    // d + 3과 3 + d 둘 다 가능하게 할려면... 비멤버함수로...
     // Date operator+(Date &lhs, int k);
     // Date operator+(int k, Date &rhs);
 
@@ -130,6 +130,7 @@ public:
     }
 };
 
+// Bubble Sort
 void sort_dates(vector<Date> &dates) {
     for (int i = dates.size()-1; i > 0; i--) {
         for (int j = 0; j < i; j++) {
@@ -137,6 +138,25 @@ void sort_dates(vector<Date> &dates) {
                 swap(dates.at(j), dates.at(j+1));
         }
     }
+}
+// 비멤버함수로 덧셈 구현하려면 이렇게
+// Date operator+(Date &lhs, int k) {
+//         Date temp = lhs;
+//         for (int i = 0; i < k; i++) {
+//             ++temp;
+//         }
+
+//         return temp;
+// }
+
+// 이건 숫자가 앞에 오는 경우니까 정의를 추가로 해주어야 함
+Date operator+(int k, Date &lhs) {
+        Date temp = lhs;
+        for (int i = 0; i < k; i++) {
+            ++temp;
+        }
+
+        return temp;
 }
 
 int main() {
@@ -147,7 +167,7 @@ int main() {
         dates.push_back(Date(y,m,d));
     }
     infile.close();
-
+    
     sort_dates(dates);
 
     for (Date &d: dates) {
@@ -160,7 +180,7 @@ int main() {
     int min_diff = abs(dates[0] - theDay);
     Date closet_day = dates[0];
     for (Date &dt : dates) {
-        int diff = abs(dt-theDay);
+        int diff = abs(dt-theDay);                  // abs(); 절댓값 반환 함수
         if (diff < min_diff) {
             min_diff = diff;
             closet_day = dt;
@@ -170,6 +190,12 @@ int main() {
     closet_day.print(cout);
     cout << " with difference " << min_diff << " days." << endl;
 
+
+
+    //Date plus = 2 + dates[1]; 
+    // dates[1].print(cout);
+    // cout << endl;
+    // plus.print(cout);
     return 0;
 }
 

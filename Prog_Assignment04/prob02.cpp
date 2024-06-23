@@ -145,6 +145,7 @@ public:
         // 모든 사각형을 포함하는 가장 작은 사각형
         Rect tangentRect = findTangentRect();
         
+        // tangentRect의 대각선을 지름으로
         double radius = sqrt(pow(tangentRect.leftDown.get_x() - tangentRect.rightUp.get_x(), 2) 
                                 + pow(tangentRect.leftDown.get_y() - tangentRect.rightUp.get_y(), 2));
 
@@ -152,7 +153,7 @@ public:
                    ((double)tangentRect.leftDown.get_y() + tangentRect.rightUp.get_y())/2);
 
         cout << "Middle Point: (" << mp.get_x() << ", " <<  mp.get_y() << ")" << endl;
-        cout << "Radius: " << radius << endl;
+        cout << "Radius: " << radius / 2 << endl;
     }
 
 };

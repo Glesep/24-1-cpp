@@ -15,14 +15,14 @@ public:
     Date(string date_string) {
         int start = 0, end = 0;
         while (date_string.at(end) != '/') end ++;
-        year = stoi(date_string.substr(start, end));
+        year = stoi(date_string.substr(start, end));                // start부터 end개 자름
 
         end++, start = end;
         while (date_string.at(end) != '/') end++;
         month = stoi(date_string.substr(start, end-start));
 
         start = end + 1;
-        day = stoi(date_string.substr(start));
+        day = stoi(date_string.substr(start));                      // start부터 끝까지 자름
     }
 
     // 윈쪽 피연산자는 자기 자신, 오른쪽 피연산자는 매개변수로 받는다.
@@ -125,7 +125,7 @@ private:
     vector<PeriodEvent> period_events;
     vector<DeadlineEvent> deadline_events;
     void parse_period_string(string period_str, Date &s, Date &t) {
-        int idx = period_str.find_first_of("-");
+        int idx = period_str.find_first_of("-");        // '-'가 첫 번째로 나올 시점을 찾기
         Date d1(period_str.substr(0,idx));
         Date d2(period_str.substr(idx+1));
         s = d1, t = d2;

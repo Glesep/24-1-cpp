@@ -10,7 +10,7 @@ private:
 class Derived : public Base {
 public:
 	void show() {
-		cout << x << " " << y << endl;			// Base 클래스에서 x, y가 private로 설정되어 있기 때문에 자식 클래스인 Derived 클래스에서 접근 불가
+		//cout << x << " " << y << endl;			// Base 클래스에서 x, y가 private로 설정되어 있기 때문에 자식 클래스인 Derived 클래스에서 접근 불가
 	}
 };
 

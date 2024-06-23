@@ -163,18 +163,19 @@ public:
   
     // 비교 대상인 원과 사각형이 교차하는지 확인
     bool isIntersect_Rect(Rect rect) {
+        // 직사각형의 꼭짓점이 원 내부에 있는지 확인
         if (dist(rect.leftDown.get_x(), rect.leftDown.get_y()) <= circleToCompare.radius ||
             dist(rect.leftDown.get_x(), rect.rightUp.get_y()) <= circleToCompare.radius  ||
             dist(rect.rightUp.get_x(), rect.rightUp.get_y()) <= circleToCompare.radius   ||
             dist(rect.rightUp.get_x(), rect.leftDown.get_y()) <= circleToCompare.radius ) {
                 return true;
             }
-        
+        // 원의 중심이 직사각형 내부에 있는지 확인
         if (circleToCompare.midpoint.get_x() >= rect.leftDown.get_x() && circleToCompare.midpoint.get_x() <= rect.rightUp.get_x() &&
             circleToCompare.midpoint.get_y() >= rect.leftDown.get_y() && circleToCompare.midpoint.get_y() <= rect.rightUp.get_y()) {
                 return true;
             }
-
+        // 원의 중심과 직사각형의 한 변이 가까운지 확인
         if ((circleToCompare.midpoint.get_x()-rect.rightUp.get_x() <= circleToCompare.radius || rect.leftDown.get_x()-circleToCompare.midpoint.get_x() <= circleToCompare.radius) 
             && circleToCompare.midpoint.get_y() >= rect.leftDown.get_y() && circleToCompare.midpoint.get_y() <= rect.rightUp.get_y() ||
             (circleToCompare.midpoint.get_y()-rect.rightUp.get_y() <= circleToCompare.radius || rect.leftDown.get_y()-circleToCompare.midpoint.get_y() <= circleToCompare.radius)
@@ -231,7 +232,8 @@ public:
 
         return p;   
     }
-
+    
+    // intersected 벡터들에서 최소 사이즈인 도형의 it을 가져옴
     void printIntersectFigures(pair<vector<Rect>::iterator, vector<Circle>::iterator> p) {
         if ((circleArea(*p.second) < rectArea(*p.first) || intersectedRects.size() == 0) && intersectedCircles.size() != 0) {
              cout << "C " << p.second->midpoint.get_x() << " " << p.second->midpoint.get_y() << " " << p.second->radius;
