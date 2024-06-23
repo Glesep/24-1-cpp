@@ -65,6 +65,7 @@ public:
         auto it = terms.begin();
         while (it != terms.end() && (*it)->expo > expo)         // iterator가 가리키는 것은 포인터! (포인터 -> 포인터 -> 객체)
             it++;
+        // 지수 부분이 같을 때
         if (it != terms.end() && (*it)->expo == expo) {
             (*it)->coef += coef;
             // 더한 뒤 계수가 0이라면
@@ -108,6 +109,7 @@ public:
         // 이미 존재하는 다항식이라면 덮어쓰기
         if (it != polys.end()) 
             *it = p;
+        // 없으면 추가하기
         else
             polys.push_back(p);
     }
@@ -117,7 +119,7 @@ public:
         if (it == polys.end())
             cout << "Undefined polynomial!" << endl;
         else
-            it->add_term(coef, expo);
+            it->add_term(coef, expo);               // 해당 다항식에 term 추가
     }
 
     void calc_poly(char name, int x) {
@@ -125,7 +127,7 @@ public:
         if (it == polys.end())
             cout << "Undefined polynomial!" << endl;
         else
-            cout << it->calc(x) << endl;
+            cout << it->calc(x) << endl;            // 해당 다항식에 x값을 넣은 값 출력
     }
 
     void print_pol(ostream &out, char name) {

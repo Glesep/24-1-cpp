@@ -8,7 +8,7 @@ int f(int x, int *py, int **ppz) {
     z = **ppz;  // 5
     *py += 2;
     y = *py;    // 7
-    x += 3;     // 7
+    x += 3;     // 7 = 4 + 3
     cout << x << " " << y << " " << z << endl;
     return x + y + z;
 

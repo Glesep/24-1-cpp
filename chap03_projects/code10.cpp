@@ -36,7 +36,7 @@ public:
         return *this;
     }
 
-    ~Bar() {
+    ~Bar() {    // Bar 타입 안의 클래스 타입 멤버들을 안전하게 삭제
         clearMembers();
         cout << "Bar Class destructor executed." << endl;
     }

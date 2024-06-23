@@ -123,6 +123,7 @@ int main() {
                 }
 
                 int j = i;
+                // 한칸 앞의 인덱스로 값 밀어주기
                 while (j < saveSize-1) {
                     arr[j] = arr[j+1];
                     j++;
