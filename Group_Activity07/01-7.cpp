@@ -28,7 +28,7 @@ int main() {
 	bp->show();
 
 	//cout << bp->x;				// Derived 클래스에서 정의된 x이기 때문에 Base 타입에선 읽히지 않는다.
-	return 0;
+	//return 0;
 
 	return 0;
 };

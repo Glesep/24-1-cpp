@@ -5,10 +5,10 @@ using namespace std;
 
 class Computer {
 private:
-    string processor;
-    int ramSize;
-    int diskSize;
-    double processorSpeed;
+    string processor = "AMD";
+    int ramSize = 16;
+    int diskSize = 500;
+    double processorSpeed = 7.76543;
 protected:
     string manufacturer;
 public:
@@ -53,6 +53,7 @@ int main()
 {
     Notebook mine;
     mine.faulty_method();
+    cout << mine.toString() << endl;        // toString 함수가 Computer에서 정의되었기 때문에 private인 객체에 접근 가능
     
     return 0;
 }

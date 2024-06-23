@@ -24,7 +24,7 @@ public:
 
 int main()
 {
-    Derived d;      // Base destructor -> Derived destructor 순으로 생성자 생성
+    Derived d;      // Base constructor -> Derived constructor 순으로 생성자 생성
                     // Derived destructor -> Base destructor 순으로 소멸자 생성
     
     return 0;

@@ -28,11 +28,12 @@ public:
     string get_type() {
         return shape_type;
     }
-    // 순수 Virtual 함수 정의
+    // Virtual 함수 정의
     virtual void print(ostream &out) {
         out << shape_type;
     }
 
+    // 순수 Virtual 함수 정의
     virtual double area() = 0;
     virtual double minx() = 0;
     virtual double maxx() = 0;

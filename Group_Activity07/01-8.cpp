@@ -4,10 +4,10 @@ using namespace std;
 
 class Base {
 public:
-	virtual void fun() {
+	void fun() {
 		cout << "Base::fun() called";
 	}
-	virtual void fun(int i) {
+	void fun(int i) {
 		cout << "Base::fun(int i) called";
 	}
 };
